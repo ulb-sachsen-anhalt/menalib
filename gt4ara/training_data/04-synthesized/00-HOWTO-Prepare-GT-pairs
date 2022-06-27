@@ -1,0 +1,30 @@
+1. edit some text with any text editor, for example from the web 
+in case you have one line text files you can concat with
+for f in File*.txt; do cat $f; echo; done > finalfile.txt
+(otherwise only cat will not insert a new line between files)
+
+2. use the script "fix_ara_text" to replace or delete unwanted chars
+(comment the last line for moving tatweel)
+
+you can also do:
+sed -i s/$'\u0020\u0647\u0020'/$'\u0020\ufbaa\u0020'/g file.txt
+(to replace the "heh" when between spaces with the isolated one (for Hegry year)
+
+3. use the script normalize.py to normalize text to NFKC
+
+4. use thhe script add_random_tatweel.py to add some stretching
+
+5. Now generate sythesized text out of the text you edited in step 1
+  * make sure the fonts for sythesizing text are installed in system
+  * you can put them in the subdir fonts but rename them to match with actual font name
+  * use the script gen_qt_from_fonts.sh to generate the pairs
+
+6. use the script set_dpi.sh to set the dpi of the generated pngs to 300
+
+7. use the script random_rotate_gt_png.py to randomly rotate the pngs
+
+8. optional: inspect the pairs using the utility Review_GT.py and edit if necessary 
+
+9. don't forget to remove the Kasheeda from the text files before training:
+     sed -i s/$'\u0640'//g *.gt.txt
+   you can also replace the heh bz intitial form, if it has space after and before 

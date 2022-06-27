@@ -1,0 +1,18 @@
+
+# 1 use the script to generate gt pairs
+gen_qt_from_fonts.sh
+
+#2 change dpi!!
+
+#3 check wich displ-GT
+
+# start training
+ketos train -o ara_digits --base-dir R -n images/*png
+
+# transcribe if needed
+ketos transcribe --prefill ara_dig.mlmodel -o digits.html images/*Amiri*png
+
+# fine tune model
+
+# recognize
+kraken -i digits_gray.png out1 binarize segment ocr -m ara_digits.mlmodel --base-dir R

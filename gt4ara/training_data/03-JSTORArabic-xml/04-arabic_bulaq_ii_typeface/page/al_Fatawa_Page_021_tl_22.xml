@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PcGts xmlns="http://schema.primaresearch.org/PAGE/gts/pagecontent/2013-07-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15 http://schema.primaresearch.org/PAGE/gts/pagecontent/2019-07-15/pagecontent.xsd">
+    <Metadata>
+        <Creator>Transkribus</Creator>
+        <Created>2022-06-13T15:16:59.911+02:00</Created>
+        <LastChange>2022-06-13T15:16:59.911+02:00</LastChange>
+    </Metadata>
+    <Page imageFilename="al_Fatawa_Page_021_tl_22.png" imageWidth="883" imageHeight="82"/>
+</PcGts>

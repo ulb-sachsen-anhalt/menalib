@@ -1,0 +1,14 @@
+diese beide hier abgelegten Modelle sind jeweils aus dem Training von kraken und tesseract erzeugt worden. 
+Beide aus dem Scratch (also ohne Optimierung eines vorherigen Modells) mit den ca. 27.000  unter
+	GT-ulb-gs-synth
+abgelegten GT-Paare.
+
+Ziel war kraken mit tesseract zu vergleichen.
+
+1. Parameter beim Trainieren von tesseract:
+LANG_TYPE=RTL \
+MAX_ITERATIONS=500000 \ 
+EPOCHS=100 
+
+2. Parameter beim Trainieren von kraken:
+ --min-epochs 20 -n --base-dir R

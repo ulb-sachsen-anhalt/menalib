@@ -1,0 +1,36 @@
+
+Vorbereitungen: s. 00-Befehle
+
+python list_unicodes.py gt4ara-all.txt
+rm_non_arabic.sh
+./gen_qt_from_fonts.sh lines_0000-1000.txt train_data_01
+./set_dpi.sh train_data_01 300
+normlikze NFKC
+alle spaces cor den folgenden Zeichen löschen: ،  :  .  ؟ 
+delete latin comma: ,
+
+--------------
+
+0. start from scratch
+
+1. erster Durchlauf:
+erste Iteration auf die ersten 1000 Zeilen von GT4ara (Frau Wagner) mit den sythetischen Bildern ohne Bildstörung: 
+ketos train -o ulb-ara-l01 --base-dir R -n train_data_01/*png
+best model ulb-ara-l01.mlmodel (0.9631029963493347)
+
+model umbenennen in ulb-ara-l01.mlmodel
+
+Model mit seite 2 testen:
+kraken -i test-page-al-gahez-p2.png results/output_p2-run_1.xml -x binarize segment ocr -m ulb-ara-l01.mlmodel --base-dir R
+
+------
+
+2. zweiter Durchlauf:
+setze Tarining fort auf Basis des Models ulb-ara-l01.mlmodel auf die Zeile 1000 - 2000 von GT4ara, diese sind mit Bildstörung erzeugt 
+ketos train -i ulb-ara-l01.mlmodel -o ulb-ara-l02 --base-dir R -n -u NFC train_data_02/*png --resize add
+
+---
+3. deritter durchlauf mit trai_data03, Zeilen  2000 bis 3000 von GT4ara, diese sind OHNE Bildstörung erzeugt
+
+ketos train -i ulb-ara-l02.mlmodel -o ulb-ara-l03 --base-dir R -n -u NFC train_data_03/*png --resize add
+
